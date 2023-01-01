@@ -29,6 +29,7 @@ Route::controller(AAAController::class)->group(function() {
 
 #PHP/Laravel 10 課題4.web.phpを編集して、admin/profile/create にアクセスしたら ProfileController の add Action に、
 #admin/profile/edit にアクセスしたら ProfileController の edit Action に割り当てるように設定してください
+//php/laravel 12課題 ログインページへのリダイレクト設定を追記
 use App\Http\Controllers\Admin\ProfileController;
 Route::controller(ProfileController::class)->prefix('admin')->group(function() {
     Route::get('profile/create', 'add')->middleware('auth');
