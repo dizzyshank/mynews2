@@ -79,6 +79,19 @@ class NewsController extends Controller
         $news = News::find($request->id);
         // 送信されてきたフォームデータを格納する
         $news_form = $request->all();
+        
+        //画像変更時エラーにならないように条件分岐
+        if ($request->remove == 'true') {
+            $news_form['image_path'] = null;
+        } elseif ($request->file('image')) {
+            $path = $request->file('image')->store('public/image');
+            $news_form['image_path'] = basename($path);
+        } else {
+            $news_form['image_path'] = $news->image_path;
+        }
+        
+        unset($news_form['image']);
+        unset($news_form['remove']);
         unset($news_form['_token']);
 
         // 該当するデータを上書きして保存する
