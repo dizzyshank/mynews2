@@ -29,7 +29,7 @@ class ProfileController extends Controller
 
         // データベースに保存する
         $profile->fill($form);
-        dd($profile);
+        //dd($profile);
         $profile->save();
         
         return redirect('admin/profile/create');
@@ -58,7 +58,7 @@ class ProfileController extends Controller
         // 該当するデータを上書きして保存する
         $profile->fill($profile_form)->save();
 
-        return redirect('admin/profile');
+        return redirect('admin/profile/create');
     }
     
 }
