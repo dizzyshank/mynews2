@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Profile;
 
+use App\Models\Document;
+
+use Carbon\Carbon;
+
 class ProfileController extends Controller
 {
     //
@@ -57,8 +61,14 @@ class ProfileController extends Controller
 
         // 該当するデータを上書きして保存する
         $profile->fill($profile_form)->save();
+        
+        // 以下を追記
+        $document = new Document();
+        $document->profile_id = $profile->id;
+        $document->edited_at = Carbon::now();
+        $document->save();
 
-        return redirect('admin/profile/create');
+        return redirect('admin/profile/edit?id=1');
     }
     
 }
