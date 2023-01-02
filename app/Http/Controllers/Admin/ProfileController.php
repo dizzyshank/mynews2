@@ -60,4 +60,15 @@ class ProfileController extends Controller
 
         return redirect('admin/profile');
     }
+    
+    public function delete(Request $request)
+    {
+        // 該当するProfile Modelを取得
+        $profile = Profile::find($request->id);
+
+        // 削除する
+        $profile->delete();
+
+        return redirect('admin/prodile/');
+    }
 }
