@@ -22,6 +22,8 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
     Route::get('news/create', 'add')->name('news.add');
     Route::post('news/create', 'create')->name('news.create');
     Route::get('news', 'index')->name('news.index');
+    Route::get('news/edit', 'edit')->name('news.edit');
+    Route::post('news/edit', 'update')->name('news.update');
 });
 
 #PHP/Laravel 10 課題3.「http://XXXXXX.jp/XXX というアクセスが来たときに、 AAAControllerのbbbというAction に渡すRoutingの設定」を書いてみてください
