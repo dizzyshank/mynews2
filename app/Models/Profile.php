@@ -19,7 +19,7 @@ class Profile extends Model
     );
     
     // Profile Modelに関連付けを行う
-    public function histories()
+    public function documents()
     {
         return $this->hasMany('App\Models\Document');
     }
